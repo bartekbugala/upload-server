@@ -15,7 +15,7 @@
     "test:all": "html-validator --allfiles --verbose",
     "init-project": "npm install && npm-run-all init:*",
     "init:dirs": "mkdirp sass css vendor images js",
-    "init:files": "touch README.md index.html js/script.js css/style.css sass/style.scss", 
+    "init:files": "touch README.md index.html js/script.js css/style.css sass/style.scss",
     "build": "npm-run-all build:*",
     "build:clean": "rimraf css",
     "build:sass": "node-sass --output-style compact -o css sass",
@@ -26,7 +26,8 @@
     "watch:sass": "node-sass --output-style expanded --source-map true -o css sass",
     "watch:autoprefixer": "autoprefixer-cli css/style.css ",
     "watch:validate": "onchange *.html -- npm-run-all test:all",
-    "watch:browsersync": "browser-sync start --server --files js css *.html"
+    "watch:browsersync": "browser-sync start --server --files js css *.html",
+    "start": "nodemon index.js"
   },
   "keywords": [
     "node",
