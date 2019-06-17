@@ -2,7 +2,7 @@
   "name": "file-upload-site",
   "version": "1.0.0",
   "description": "Site for uploading files, images",
-  "main": "./app/program.js",
+  "main": "index.js",
   "scripts": {
     "cook-all": "npm-run-all cook:*",
     "cook:index": "curl https://raw.githubusercontent.com/bartekbugala/my-webtemplates/master/index.html -o index.html",
