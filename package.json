@@ -1,0 +1,16 @@
+{
+  "name": "file-upload-site",
+  "version": "1.0.0",
+  "description": "Site for uploading files, images",
+  "main": "./app/program.js",
+  "scripts": {
+    "test": "none"
+  },
+  "keywords": [
+    "node",
+    "upload",
+    "files"
+  ],
+  "author": "BB",
+  "license": "MIT"
+}
