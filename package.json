@@ -4,7 +4,29 @@
   "description": "Site for uploading files, images",
   "main": "./app/program.js",
   "scripts": {
-    "test": "none"
+    "cook-all": "npm-run-all cook:*",
+    "cook:index": "curl https://raw.githubusercontent.com/bartekbugala/my-webtemplates/master/index.html -o index.html",
+    "cook:scss": "curl https://raw.githubusercontent.com/bartekbugala/my-webtemplates/master/style.scss -o sass/style.scss",
+    "cook:mustache": "curl https://raw.githubusercontent.com/janl/mustache.js/master/mustache.js -o vendor/mustache.js",
+    "cook:gitignore": "curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore",
+    "cook:normalize": "curl https://necolas.github.io/normalize.css/latest/normalize.css -o vendor/normalize.css",
+    "cook:git": "git init && git add . && git commit -m \"Initial commit\" && git status",
+    "test": "npm-run-all test:*",
+    "test:all": "html-validator --allfiles --verbose",
+    "init-project": "npm install && npm-run-all init:*",
+    "init:dirs": "mkdirp sass css vendor images js",
+    "init:files": "touch README.md index.html js/script.js css/style.css sass/style.scss", 
+    "build": "npm-run-all build:*",
+    "build:clean": "rimraf css",
+    "build:sass": "node-sass --output-style compact -o css sass",
+    "build:autoprefixer": "autoprefixer-cli css/style.css",
+    "build-dev:sass": "node-sass --output-style expanded --source-map true -o css sass",
+    "watch": "npm-run-all build test -p watch:*",
+    "watch:sassprefixer": "onchange -d 100 sass/*.scss sass/**/*.scss -- npm-run-all watch:sass watch:autoprefixer",
+    "watch:sass": "node-sass --output-style expanded --source-map true -o css sass",
+    "watch:autoprefixer": "autoprefixer-cli css/style.css ",
+    "watch:validate": "onchange *.html -- npm-run-all test:all",
+    "watch:browsersync": "browser-sync start --server --files js css *.html"
   },
   "keywords": [
     "node",
@@ -12,5 +34,25 @@
     "files"
   ],
   "author": "BB",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer-cli": "^1.0.0",
+    "browser-sync": "^2.26.5",
+    "globstar": "^1.0.0",
+    "mkdirp": "^0.5.1",
+    "node-sass": "^4.11.0",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^5.2.0",
+    "rimraf": "^2.6.3",
+    "allhtml-validator-cli": "git+https://github.com/bartekbugala/allhtml-validator-cli"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:bartekbugala/repositoryName.git"
+  },
+  "bugs": {
+    "url": "https://git@github.com:bartekbugala/repositoryName.git/issues"
+  },
+  "homepage": "https://git@github.com:bartekbugala/repositoryName.git#readme",
+  "dependencies": {}
 }
