@@ -55,5 +55,7 @@
     "url": "https://git@github.com:bartekbugala/repositoryName.git/issues"
   },
   "homepage": "https://git@github.com:bartekbugala/repositoryName.git#readme",
-  "dependencies": {}
+  "dependencies": {
+    "colors": "^1.3.3"
+  }
 }
